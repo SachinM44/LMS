@@ -34,12 +34,12 @@ const darkColors: ThemeColors = {
     shadow: 'rgba(0, 0, 0, 0.3)',
 };
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+export const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+
 const THEME_KEY = '@lms_theme'
 
-
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [isDark, setIsDark] = useState(false) ///false initialy 
+    const [isDark, setIsDark] = useState(false)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -50,17 +50,13 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
                     setIsDark(savedTheme === 'dark')
                 }
             } catch (error) {
-                console.error('failed to load preferance from async storage')
+                console.error('failed to load preference from async storage')
+            } finally {
+                setLoading(false)
             }
         }
         loadThemePreference()
     }, [])
-
-
-    if (loading) {
-        return null
-    }
-
 
     const toggleTheme = async () => {
         try {
@@ -69,8 +65,6 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
             await AsyncStorage.setItem(THEME_KEY, newTheme ? 'dark' : 'light')
         } catch (error) {
             console.error('failed to save the theme', error)
-        } finally {
-            setLoading(false)
         }
     }
 
@@ -86,21 +80,13 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [isDark])
 
+    if (loading) {
+        return null
+    }
 
     return (
         <ThemeContext.Provider value={value}>
             {children}
         </ThemeContext.Provider>
     )
-}
-
-
-/// theme hook 
-export const useTheme = (): ThemeContextType => {
-    const context = useContext(ThemeContext)
-    if (!context) {
-        throw new Error("something going wrong")
-
-    }
-    return context
 }

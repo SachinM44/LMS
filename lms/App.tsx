@@ -1,18 +1,61 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, Pressable } from 'react-native';
+import { useTheme } from './src/hooks';
+import { ThemeProvider } from './src/context/ThemeContext';
 
-export default function App() {
+function TestScreen() {
+  const { colors, isDark, toggleTheme } = useTheme();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start hello there  on your app!</Text>
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.background
+      }}
+    >
+      <Text
+        style={{
+          fontSize: 24,
+          fontWeight: 'bold',
+          marginBottom: 16,
+          color: colors.text
+        }}
+      >
+        Hello LMS! 🚀
+      </Text>
+
+      <Text
+        style={{
+          fontSize: 18,
+          marginBottom: 16,
+          color: colors.textSecondary
+        }}
+      >
+        Theme: {isDark ? 'Dark 🌙' : 'Light ☀️'}
+      </Text>
+
+      <Pressable
+        onPress={toggleTheme}
+        style={{
+          paddingHorizontal: 24,
+          paddingVertical: 12,
+          borderRadius: 8,
+          backgroundColor: colors.primary
+        }}
+      >
+        <Text style={{ color: '#FFFFFF', fontWeight: '600' }}>
+          Toggle Theme
+        </Text>
+      </Pressable>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <ThemeProvider>
+      <TestScreen />
+    </ThemeProvider>
+  );
+}
