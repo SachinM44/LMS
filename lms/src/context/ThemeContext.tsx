@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { Theme, ThemeColors, ThemeContextType } from "../types";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -69,6 +69,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
             await AsyncStorage.setItem(THEME_KEY, newTheme ? 'dark' : 'light')
         } catch (error) {
             console.error('failed to save the theme', error)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -90,4 +92,15 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
             {children}
         </ThemeContext.Provider>
     )
+}
+
+
+/// theme hook 
+export const useTheme = (): ThemeContextType => {
+    const context = useContext(ThemeContext)
+    if (!context) {
+        throw new Error("something going wrong")
+
+    }
+    return context
 }
