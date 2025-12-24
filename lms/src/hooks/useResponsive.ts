@@ -1,6 +1,5 @@
 import { Platform, useWindowDimensions } from "react-native"
 
-
 interface UseResponsiveReturn {
     isWeb:boolean,
     isMobile:boolean,

@@ -8,7 +8,7 @@ export  enum ActivityType{
 export type Activity = 
    |
    {
-     id:string,
+    id:string,
     title:string,
     type: ActivityType.CLASS
     category:string,
@@ -25,7 +25,7 @@ export type Activity =
    }
 
 
-export type FilterType = 'All' | 'completed' | 'Pending'
+export type FilterType = 'All' | 'completed' | 'Pending' 
 
 export interface ThemeColors {
   background: string;
