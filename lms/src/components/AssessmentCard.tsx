@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { Video, User, Clock } from 'lucide-react-native';
+import { FileText, Calendar } from 'lucide-react-native';
 import { Activity, ActivityType } from '../types';
 import { useTheme } from '../hooks';
 
-interface ClassCardProps {
-    activity: Activity & { type: ActivityType.CLASS };
+interface AssessmentCardProps {
+    activity: Activity & { type: ActivityType.QUIZ | ActivityType.ASSIGNMENT };
 }
 
-export const ClassCard: React.FC<ClassCardProps> = ({ activity }) => {
+export const AssessmentCard: React.FC<AssessmentCardProps> = ({ activity }) => {
     const { colors } = useTheme();
+    const isPending = activity.status === 'PENDING';
 
     return (
         <View
@@ -29,13 +30,13 @@ export const ClassCard: React.FC<ClassCardProps> = ({ activity }) => {
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
                 <View
                     style={{
-                        backgroundColor: colors.primary + '20',
+                        backgroundColor: colors.secondary + '20',
                         padding: 8,
                         borderRadius: 8,
                         marginRight: 12,
                     }}
                 >
-                    <Video size={20} color={colors.primary} />
+                    <FileText size={20} color={colors.secondary} />
                 </View>
                 <View style={{ flex: 1 }}>
                     <Text
@@ -60,8 +61,9 @@ export const ClassCard: React.FC<ClassCardProps> = ({ activity }) => {
                 </View>
             </View>
 
+            {/* Due Date */}
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
-                <User size={16} color={colors.textSecondary} />
+                <Calendar size={16} color={colors.textSecondary} />
                 <Text
                     style={{
                         fontSize: 14,
@@ -69,65 +71,48 @@ export const ClassCard: React.FC<ClassCardProps> = ({ activity }) => {
                         marginLeft: 6,
                     }}
                 >
-                    {activity.instructor}
+                    {activity.dueDate}
                 </Text>
             </View>
 
-            <View style={{ marginBottom: 8 }}>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginBottom: 6,
-                    }}
-                >
-                    <Text style={{ fontSize: 12, color: colors.textSecondary }}>Progress</Text>
-                    <Text style={{ fontSize: 12, fontWeight: '600', color: colors.primary }}>
-                        {activity.progress}%
-                    </Text>
-                </View>
-                <View
-                    style={{
-                        height: 6,
-                        backgroundColor: colors.border,
-                        borderRadius: 3,
-                        overflow: 'hidden',
-                    }}
-                >
-                    <View
-                        style={{
-                            height: '100%',
-                            width: `${activity.progress}%`,
-                            backgroundColor: colors.primary,
-                        }}
-                    />
-                </View>
-            </View>
-
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
-                <Clock size={16} color={colors.textSecondary} />
+            <View
+                style={{
+                    alignSelf: 'flex-start',
+                    paddingHorizontal: 12,
+                    paddingVertical: 6,
+                    borderRadius: 12,
+                    backgroundColor: isPending ? colors.warning + '20' : colors.success + '20',
+                    marginBottom: 12,
+                }}
+            >
                 <Text
                     style={{
-                        fontSize: 14,
-                        color: colors.textSecondary,
-                        marginLeft: 6,
+                        fontSize: 12,
+                        fontWeight: '600',
+                        color: isPending ? colors.warning : colors.success,
                     }}
                 >
-                    {activity.durationLeft}
+                    {activity.status}
                 </Text>
             </View>
 
             <Pressable
                 style={{
-                    backgroundColor: colors.primary,
+                    backgroundColor: isPending ? colors.secondary : colors.border,
                     paddingVertical: 12,
                     borderRadius: 8,
                     alignItems: 'center',
                 }}
-                accessibilityLabel={`Resume ${activity.title}`}
+                accessibilityLabel={`${isPending ? 'Start' : 'View'} ${activity.title}`}
             >
-                <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 14 }}>
-                    Resume Class
+                <Text
+                    style={{
+                        color: isPending ? '#FFFFFF' : colors.text,
+                        fontWeight: '600',
+                        fontSize: 14,
+                    }}
+                >
+                    {isPending ? 'Start' : 'View'}
                 </Text>
             </Pressable>
         </View>

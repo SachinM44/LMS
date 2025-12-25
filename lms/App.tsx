@@ -7,6 +7,7 @@ import { Header } from './src/components/Header';
 import { FilterChip } from './src/components/FilterChip';
 import { FilterBar } from './src/components/FilterBar';
 import { ClassCard } from './src/components/ClassCard';
+import { AssessmentCard } from './src/components/AssessmentCard';
 
 function TestScreen() {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -33,8 +34,10 @@ function TestScreen() {
         }}
       >
       </Text>
-       
 
+
+     <AssessmentCard activity={onChangeText} />    
+   
        <FilterBar activeFilter={onChangeText} />
 
   <ClassCard activity='csm' />
