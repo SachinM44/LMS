@@ -4,7 +4,7 @@ import { Pressable, TextInput, View } from "react-native"
 import { Search, X } from "lucide-react-native"
 
 interface SearchBarPops {
-    placeholder: string,
+    placeholder?: string,
     onChangeText: (text: string) => void,
     value: string
 }

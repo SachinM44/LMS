@@ -3,11 +3,12 @@ import { useTheme } from './src/hooks';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { SearchBar } from './src/components/SearchBar';
 import { DarkModeToggle } from './src/components/DarkModeToggle';
+import { Header } from './src/components/Header';
 
 function TestScreen() {
   const { colors, isDark, toggleTheme } = useTheme();
 
-  const onChangeText=()=>{
+  const onChangeText = () => {
     console.log('hello there ')
   }
 
@@ -29,12 +30,19 @@ function TestScreen() {
         }}
       >
       </Text>
-      <DarkModeToggle />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+        }}>
 
-      <SearchBar 
-      placeholder='hello there'
-      onChangeText={onChangeText}
-      value='' />
+
+
+
+
+        <Header searchQuery='value' />
+
+      </View>
     </View>
   );
 }
