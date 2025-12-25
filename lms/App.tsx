@@ -5,6 +5,8 @@ import { SearchBar } from './src/components/SearchBar';
 import { DarkModeToggle } from './src/components/DarkModeToggle';
 import { Header } from './src/components/Header';
 import { FilterChip } from './src/components/FilterChip';
+import { FilterBar } from './src/components/FilterBar';
+import { ClassCard } from './src/components/ClassCard';
 
 function TestScreen() {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -31,9 +33,11 @@ function TestScreen() {
         }}
       >
       </Text>
-     
+       
 
+       <FilterBar activeFilter={onChangeText} />
 
+  <ClassCard activity='csm' />
 
    <FilterChip onPress={onChangeText} label='djdjjd'  isActive />
 
