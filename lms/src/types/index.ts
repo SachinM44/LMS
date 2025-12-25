@@ -25,7 +25,7 @@ export type Activity =
    }
 
 
-export type FilterType = 'All' | 'completed' | 'Pending' 
+export type FilterType = 'All' | 'Classes' | 'Assessments' | 'AI' | 'ML' | 'Cloud Computing' 
 
 export interface ThemeColors {
   background: string;

@@ -9,7 +9,7 @@ interface FilterBarProps {
     onFilterChange: (filter: FilterType) => void;
 }
 
-const FILTERS: FilterType[] = ['All', 'completed', 'Pending'];
+const FILTERS: FilterType[] = ['All', 'AI', 'Assessments', 'Cloud Computing', 'Classes', 'ML'];
 
 export const FilterBar: React.FC<FilterBarProps> = ({ activeFilter, onFilterChange }) => {
     const { colors } = useTheme();
