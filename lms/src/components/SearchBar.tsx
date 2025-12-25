@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React, { useState } from "react"
 import { useTheme } from "../hooks"
 import { Pressable, TextInput, View } from "react-native"
 import { Search, X } from "lucide-react-native"
@@ -14,8 +14,8 @@ export const SearchBar: React.FC<SearchBarPops> = ({
     onChangeText,
     placeholder = 'search activity ..'
 }) => {
-
     const { colors } = useTheme()
+    const [isFocused, setIsFocused] = useState(false)
 
     return (
         <View
@@ -23,26 +23,30 @@ export const SearchBar: React.FC<SearchBarPops> = ({
                 flexDirection: 'row',
                 alignItems: 'center',
                 backgroundColor: colors.card,
-                borderRadius: 8,
-                borderColor: colors.border,
-                paddingHorizontal: 12,
-                paddingVertical: 8
+                borderRadius: 18,
+                borderWidth: 1,
+                borderColor: isFocused ? colors.primary : colors.border, // ✅ Custom focus indicator
+                paddingHorizontal: 11,
+                paddingVertical: 5
             }} >
 
             <Search size={20} color={colors.textSecondary} />
-
 
             <TextInput
                 value={value}
                 onChangeText={onChangeText}
                 placeholder={placeholder}
                 placeholderTextColor={colors.textSecondary}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 style={{
                     flex: 1,
                     marginLeft: 8,
                     fontSize: 16,
-                    color: colors.text
+                    color: colors.text,
+                    outlineStyle: 'none',
                 }}
+                underlineColorAndroid="transparent"
                 accessibilityLabel="Search activities"
             />
 
@@ -51,8 +55,6 @@ export const SearchBar: React.FC<SearchBarPops> = ({
                     <X size={20} color={colors.textSecondary} />
                 </Pressable>
             )}
-
         </View>
     )
-
 }

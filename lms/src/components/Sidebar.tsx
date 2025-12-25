@@ -34,7 +34,7 @@ export const Sidebar: React.FC = () => {
                     style={{
                         fontSize: 20,
                         fontWeight: 'bold',
-                        color: colors.primary,
+                        color: colors.secondary,
                     }}
                 >
                     LMS Platform

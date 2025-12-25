@@ -3,6 +3,8 @@ import { Activity, ActivityType } from "../types";
 import { ClassCard } from "./ClassCard";
 import { AssessmentCard } from "./AssessmentCard";
 
+
+
 export interface ActivityCardProps {
     activity: Activity;
 }

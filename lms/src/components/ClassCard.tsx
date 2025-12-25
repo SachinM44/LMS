@@ -24,6 +24,7 @@ export const ClassCard: React.FC<ClassCardProps> = ({ activity }) => {
                 shadowOpacity: 0.1,
                 shadowRadius: 4,
                 elevation: 2,
+                height: 250
             }}
         >
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>

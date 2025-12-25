@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, Image } from 'react-native';
 import { Activity } from '../types';
 import { ActivityCard } from './ActivityCard';
 import { useTheme, useResponsive } from '../hooks';
@@ -44,6 +44,7 @@ export const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
             >
                 No activities found
             </Text>
+
             <Text
                 style={{
                     fontSize: 14,
@@ -54,6 +55,18 @@ export const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
             >
                 Try adjusting your search or filters
             </Text>
+
+            <Image
+                source={require('../../assets/no-activity-cta.svg')} // Change to .png
+                style={{
+                    width: 200,
+                    height: 200,
+                    marginVertical: 16,
+                    opacity: 0.6,
+                }}
+                resizeMode="contain"
+            />
+
         </View>
     );
 

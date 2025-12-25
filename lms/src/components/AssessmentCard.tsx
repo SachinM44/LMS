@@ -25,6 +25,7 @@ export const AssessmentCard: React.FC<AssessmentCardProps> = ({ activity }) => {
                 shadowOpacity: 0.1,
                 shadowRadius: 4,
                 elevation: 2,
+                height: 250
             }}
         >
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
@@ -61,8 +62,7 @@ export const AssessmentCard: React.FC<AssessmentCardProps> = ({ activity }) => {
                 </View>
             </View>
 
-            {/* Due Date */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12, paddingTop:15 }}>
                 <Calendar size={16} color={colors.textSecondary} />
                 <Text
                     style={{
@@ -81,6 +81,7 @@ export const AssessmentCard: React.FC<AssessmentCardProps> = ({ activity }) => {
                     paddingHorizontal: 12,
                     paddingVertical: 6,
                     borderRadius: 12,
+                    marginTop:5,
                     backgroundColor: isPending ? colors.warning + '20' : colors.success + '20',
                     marginBottom: 12,
                 }}
@@ -96,7 +97,10 @@ export const AssessmentCard: React.FC<AssessmentCardProps> = ({ activity }) => {
                 </Text>
             </View>
 
-            <Pressable
+           <View style={{
+            marginTop:10
+           }}>
+             <Pressable
                 style={{
                     backgroundColor: isPending ? colors.secondary : colors.border,
                     paddingVertical: 12,
@@ -105,6 +109,7 @@ export const AssessmentCard: React.FC<AssessmentCardProps> = ({ activity }) => {
                 }}
                 accessibilityLabel={`${isPending ? 'Start' : 'View'} ${activity.title}`}
             >
+
                 <Text
                     style={{
                         color: isPending ? '#FFFFFF' : colors.text,
@@ -115,6 +120,7 @@ export const AssessmentCard: React.FC<AssessmentCardProps> = ({ activity }) => {
                     {isPending ? 'Start' : 'View'}
                 </Text>
             </Pressable>
+           </View>
         </View>
     );
 };

@@ -25,7 +25,7 @@ export const BottomTabBar: React.FC = () => {
                 borderTopWidth: 1,
                 borderTopColor: colors.border,
                 paddingVertical: 8,
-                paddingBottom: 20, // Extra padding for iOS safe area
+                paddingBottom: 20,
             }}
         >
             {tabs.map((tab, index) => (
