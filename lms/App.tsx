@@ -9,6 +9,7 @@ import { FilterBar } from './src/components/FilterBar';
 import { ClassCard } from './src/components/ClassCard';
 import { AssessmentCard } from './src/components/AssessmentCard';
 import { ActivityList } from './src/components/ActivityList';
+import { Sidebar } from './src/components/Sidebar';
 
 function TestScreen() {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -36,8 +37,9 @@ function TestScreen() {
       >
       </Text>
 
+      <Sidebar />
 
-    <ActivityList activities={onChangeText} key={} />
+
 
     </View>
   );
