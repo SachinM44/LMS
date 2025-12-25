@@ -37,7 +37,7 @@ export const Sidebar: React.FC = () => {
                         color: colors.secondary,
                     }}
                 >
-                    LMS Platform
+                    Great Learning
                 </Text>
             </View>
 
