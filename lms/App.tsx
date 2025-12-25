@@ -8,6 +8,7 @@ import { FilterChip } from './src/components/FilterChip';
 import { FilterBar } from './src/components/FilterBar';
 import { ClassCard } from './src/components/ClassCard';
 import { AssessmentCard } from './src/components/AssessmentCard';
+import { ActivityList } from './src/components/ActivityList';
 
 function TestScreen() {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -36,15 +37,7 @@ function TestScreen() {
       </Text>
 
 
-     <AssessmentCard activity={onChangeText} />    
-   
-       <FilterBar activeFilter={onChangeText} />
-
-  <ClassCard activity='csm' />
-
-   <FilterChip onPress={onChangeText} label='djdjjd'  isActive />
-
-        <Header searchQuery='value' />
+    <ActivityList activities={onChangeText} key={} />
 
     </View>
   );
