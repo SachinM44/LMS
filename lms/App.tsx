@@ -4,6 +4,7 @@ import { ThemeProvider } from './src/context/ThemeContext';
 import { SearchBar } from './src/components/SearchBar';
 import { DarkModeToggle } from './src/components/DarkModeToggle';
 import { Header } from './src/components/Header';
+import { FilterChip } from './src/components/FilterChip';
 
 function TestScreen() {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -30,19 +31,14 @@ function TestScreen() {
         }}
       >
       </Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-        }}>
+     
 
 
 
-
+   <FilterChip onPress={onChangeText} label='djdjjd'  isActive />
 
         <Header searchQuery='value' />
 
-      </View>
     </View>
   );
 }
