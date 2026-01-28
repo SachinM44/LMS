@@ -12,7 +12,6 @@
   - **Course Enrollment**: Triggers after 3 seconds.
   - **Video Ready**: Triggers after 5 seconds.
   - **WebView Loaded**: Triggers automatically on load.
-- **Bonus**: Tapping the "Video Ready" notification automatically navigates the user to the Video Player page.
 
 ### 3. Video Player (HLS)
 - Plays HLS (`.m3u8`) video streams using `expo-av`.
@@ -20,8 +19,6 @@
   - Play/Pause
   - Mute/Unmute
   - Fullscreen toggle
-  - **Bonus**: Seek Forward (+10s) and Seek Backward (-10s) buttons.
-- **Bonus**: Stream Switching allows users to toggle between multiple HLS streams.
 
 ## Tech Stack
 
@@ -36,9 +33,10 @@
   - `expo-device`
 
 
-## 🏃 How to Run
+##  How to Run
 
-git clone 
+git clone https://github.com/SachinM44/LMS.git
+cd HouseOfEdTech-Assignment
 
 1. **Install Dependencies**:
    ```bash
